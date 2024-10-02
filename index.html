@@ -21,6 +21,9 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             width: 320px;
             border: 3px solid #ff7f50; /* Coral color for border */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         #display {
             width: 100%;
@@ -35,24 +38,29 @@
             color: #fff;
         }
         button {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             font-size: 24px;
-            margin: 5px;
+            margin: 10px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%; /* Circular buttons */
             background-color: #ff7f50; /* Coral color for buttons */
             color: white;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.1s;
         }
         button:hover {
             background-color: #ff6347; /* Tomato color on hover */
+        }
+        button:active {
+            background-color: #ff4500; /* Darker orange when pressed */
+            transform: scale(0.95); /* Slightly shrink button on press */
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+            justify-items: center; /* Center buttons in grid cells */
         }
     </style>
 </head>
