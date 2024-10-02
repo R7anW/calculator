@@ -104,20 +104,29 @@
             background-color: hsl(0, 0%, 50%);
         }
 
-        /* Dark Mode Toggle Button */
+        /* Dark Mode Toggle Button - More Prominent */
         #mode-toggle {
             position: absolute;
             top: 20px;
             right: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.5rem;
             cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #mode-toggle:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 
 <body>
-    <button id="mode-toggle">Switch to Dark Mode</button>
+    <button id="mode-toggle">Dark Mode</button>
 
     <div id="calculator">
         <input id="display" readonly>
@@ -177,9 +186,9 @@
             });
 
             if (body.classList.contains("dark-mode")) {
-                modeToggle.textContent = "Switch to Light Mode";
+                modeToggle.textContent = "Light Mode";
             } else {
-                modeToggle.textContent = "Switch to Dark Mode";
+                modeToggle.textContent = "Dark Mode";
             }
         });
     </script>
