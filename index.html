@@ -38,12 +38,12 @@
             color: #fff;
         }
         button {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             font-size: 24px;
             margin: 10px;
             border: none;
-            border-radius: 50%; /* Circular buttons */
+            border-radius: 8px; /* Smooth edges */
             background-color: #ff7f50; /* Coral color for buttons */
             color: white;
             cursor: pointer;
@@ -62,6 +62,10 @@
             gap: 10px;
             justify-items: center; /* Center buttons in grid cells */
         }
+        .equals {
+            grid-column: 4; /* Position in the last column */
+            grid-row: 5; /* Position in the last row */
+        }
     </style>
 </head>
 <body>
@@ -79,7 +83,7 @@
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="calculateResult()">=</button>
+            <button class="equals" onclick="calculateResult()">=</button>
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
