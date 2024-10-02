@@ -30,7 +30,6 @@
             border-radius: 15px;
             max-width: 500px;
             overflow: hidden;
-            position: absolute;
         }
 
         #display {
@@ -41,15 +40,6 @@
             border: none;
             background-color: hsl(0, 0%, 20%);
             color: white;
-        }
-
-        #drag-button {
-            width: 100%;
-            padding: 10px;
-            background-color: hsl(0, 0%, 10%);
-            color: white;
-            text-align: center;
-            cursor: move;
         }
 
         body {
@@ -84,33 +74,29 @@
             background-color: #FFDEA0;
         }
     </style>
-
 </head>
 
 <body>
-    <div id="draggable-container">
-        <div id="calculator">
-            <div id="drag-button">Drag</div>
-            <input id="display" readonly>
-            <div id="keys">
-                <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
-                <button onclick="appendToDisplay('7')">7</button>
-                <button onclick="appendToDisplay('8')">8</button>
-                <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
-                <button onclick="appendToDisplay('4')">4</button>
-                <button onclick="appendToDisplay('5')">5</button>
-                <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
-                <button onclick="appendToDisplay('1')">1</button>
-                <button onclick="appendToDisplay('2')">2</button>
-                <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
-                <button onclick="appendToDisplay('0')">0</button>
-                <button onclick="appendToDisplay('.')">.</button>
-                <button onclick="calculate()">=</button>
-                <button onclick="clearDisplay()" class="operator-btn">C</button>
-            </div>
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
         </div>
     </div>
 
@@ -132,56 +118,6 @@
                 display.value = "Error";
             }
         }
-
-        // Draggable functionality
-        const draggableContainer = document.getElementById("draggable-container");
-        const calculator = document.getElementById("calculator");
-        const dragButton = document.getElementById("drag-button");
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        dragButton.addEventListener("mousedown", (e) => {
-            isDragging = true;
-            offsetX = e.clientX - calculator.getBoundingClientRect().left;
-            offsetY = e.clientY - calculator.getBoundingClientRect().top;
-        });
-
-        document.addEventListener("mousemove", (e) => {
-            if (isDragging) {
-                // Calculate new position
-                let newLeft = e.clientX - offsetX;
-                let newTop = e.clientY - offsetY;
-
-                // Get viewport dimensions
-                const viewportWidth = window.innerWidth;
-                const viewportHeight = window.innerHeight;
-
-                // Get calculator dimensions
-                const calculatorWidth = calculator.offsetWidth;
-                const calculatorHeight = calculator.offsetHeight;
-
-                // Constrain the calculator within the viewport
-                if (newLeft < 0) {
-                    newLeft = 0;
-                } else if (newLeft + calculatorWidth > viewportWidth) {
-                    newLeft = viewportWidth - calculatorWidth;
-                }
-
-                if (newTop < 0) {
-                    newTop = 0;
-                } else if (newTop + calculatorHeight > viewportHeight) {
-                    newTop = viewportHeight - calculatorHeight;
-                }
-
-                // Set new position
-                calculator.style.left = `${newLeft}px`;
-                calculator.style.top = `${newTop}px`;
-            }
-        });
-
-        document.addEventListener("mouseup", () => {
-            isDragging = false;
-        });
     </script>
 </body>
 
