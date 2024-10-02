@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* General Button Styles */
         button {
             width: 80px;
             height: 80px;
             border-radius: 40px;
             border: none;
-            background-color: hsl(0, 0%, 30%);
-            color: white;
             font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         #keys {
@@ -26,7 +26,6 @@
 
         #calculator {
             font-family: Arial, sans-serif;
-            background-color: hsl(0, 0%, 15%);
             border-radius: 15px;
             max-width: 400px;
             overflow: hidden;
@@ -38,8 +37,6 @@
             font-size: 3rem;
             text-align: left;
             border: none;
-            background-color: hsl(0, 0%, 20%);
-            color: white;
         }
 
         body {
@@ -48,77 +45,94 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #9d9d9d;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        button:hover {
-            background-color: hsl(0, 0%, 40%);
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: hsl(0, 0%, 95%);
         }
 
-        button:active {
-            background-color: hsl(0, 0%, 50%);
+        #calculator.light-mode {
+            background-color: hsl(0, 0%, 85%);
         }
 
-        .operator-btn {
+        #display.light-mode {
+            background-color: hsl(0, 0%, 90%);
+            color: black;
+        }
+
+        button.light-mode {
+            background-color: hsl(0, 0%, 75%);
+            color: black;
+        }
+
+        button.operator-btn.light-mode {
             background-color: #FFA600;
         }
 
-        .operator-btn:hover {
-            background-color: #FFC14E;
+        button.light-mode:hover {
+            background-color: hsl(0, 0%, 65%);
         }
 
-        .operator-btn:active {
-            background-color: #FFDEA0;
+        button.light-mode:active {
+            background-color: hsl(0, 0%, 55%);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: hsl(0, 0%, 15%);
+        }
+
+        #calculator.dark-mode {
+            background-color: hsl(0, 0%, 10%);
+        }
+
+        #display.dark-mode {
+            background-color: hsl(0, 0%, 20%);
+            color: white;
+        }
+
+        button.dark-mode {
+            background-color: hsl(0, 0%, 30%);
+            color: white;
+        }
+
+        button.operator-btn.dark-mode {
+            background-color: #FFA600;
+        }
+
+        button.dark-mode:hover {
+            background-color: hsl(0, 0%, 40%);
+        }
+
+        button.dark-mode:active {
+            background-color: hsl(0, 0%, 50%);
+        }
+
+        /* Dark Mode Toggle Button */
+        #mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
         }
     </style>
 </head>
 
-<body>
-    <div id="calculator">
-        <input id="display" readonly>
+<body class="light-mode">
+    <button id="mode-toggle">Switch to Dark Mode</button>
+
+    <div id="calculator" class="light-mode">
+        <input id="display" class="light-mode" readonly>
         <div id="keys">
-            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="calculate()">=</button>
-            <button onclick="clearDisplay()" class="operator-btn">C</button>
-        </div>
-    </div>
-
-    <script>
-        const display = document.getElementById("display");
-
-        function appendToDisplay(input) {
-            display.value += input;
-        }
-
-        function clearDisplay() {
-            display.value = "";
-        }
-
-        function calculate() {
-            try {
-                display.value = eval(display.value);
-            } catch (error) {
-                display.value = "Error";
-            }
-        }
-    </script>
-</body>
-
-</html>
+            <button onclick="appendToDisplay('+')" class="operator-btn light-mode">+</button>
+            <button onclick="appendToDisplay('7')" class="light-mode">7</button>
+            <button onclick="appendToDisplay('8')" class="light-mode">8</button>
+            <button onclick="appendToDisplay('9')" class="light-mode">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn light-mode
