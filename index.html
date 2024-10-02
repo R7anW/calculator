@@ -60,13 +60,8 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+            width: 100%; /* Make grid take full width */
             justify-items: center; /* Center buttons in grid cells */
-            width: 100%; /* Full width of the calculator */
-            max-width: 320px; /* Ensure buttons don’t exceed calculator width */
-        }
-        .equals {
-            grid-column: 4; /* Position in the last column */
-            grid-row: 5; /* Position in the last row */
         }
     </style>
 </head>
@@ -85,7 +80,7 @@
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
-            <button class="equals" onclick="calculateResult()">=</button>
+            <button onclick="calculateResult()">=</button>
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
